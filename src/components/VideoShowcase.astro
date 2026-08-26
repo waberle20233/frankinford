@@ -1,0 +1,50 @@
+---
+import { YouTube } from '@astro-community/astro-embed-youtube';
+
+const builds = [
+  {
+    id: 'BailknVNGrY',
+    title: 'Front Clip Off',
+    note: 'Separating the front clip clean requires marking every body line before the first cut so realignment is exact down to the panel gap. We walk through the cut sequence, wiring disconnects, and how we protect the firewall from warping under the torch.',
+  },
+  {
+    id: 'cu4AcKFirBE',
+    title: 'Tractor Clip Pull',
+    note: 'Pulling a clip with a tractor instead of an engine hoist demands precise rigging angles to avoid twisting the unibody or tearing mounting points. This log covers load balancing, chain placement, and the slow-pull technique that keeps the frame square.',
+  },
+  {
+    id: 'Ja2BrZB1V44',
+    title: 'Lifting & Alignment',
+    note: 'Getting a swapped front end to sit right is a game of fractions of an inch across ride height, caster, and panel gaps. We show the jack-stand sequence, laser alignment checks, and the shims that make a swapped clip look factory.',
+  },
+];
+---
+
+<section id="builds" class="bg-rig-950 py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-[0.3em] text-ember-500">Build Logs</p>
+      <h2 class="mt-3 text-3xl font-extrabold uppercase tracking-tight text-zinc-50 sm:text-4xl">
+        Every Job, Documented On Camera
+      </h2>
+      <p class="mt-4 text-zinc-400">
+        No staged reveals. These are unedited clips from real jobs in the shop &mdash; the cuts, the
+        rigging, and the alignment work that separates a straight build from a tweaked one.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-3">
+      {builds.map((build) => (
+        <article class="flex flex-col overflow-hidden rounded-xl border border-rig-700 bg-rig-900">
+          <div class="aspect-video w-full [&_iframe]:h-full [&_iframe]:w-full [&_lite-youtube]:h-full [&_lite-youtube]:w-full">
+            <YouTube id={build.id} title={build.title} />
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="text-lg font-bold uppercase tracking-tight text-zinc-50">{build.title}</h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-zinc-400">{build.note}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

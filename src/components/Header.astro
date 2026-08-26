@@ -1,0 +1,61 @@
+---
+const navLinks = [
+  { href: '#builds', label: 'Builds' },
+  { href: '#services', label: 'Services' },
+  { href: '#about-builder', label: 'About' },
+  { href: '#process', label: 'Process' },
+  { href: '#quote', label: 'Get a Quote' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-rig-700 bg-rig-950/90 backdrop-blur">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <a href="#top" class="flex items-center gap-3">
+      <img
+        src="/logo.jpg"
+        alt="FrankinFord Fabrications logo"
+        class="h-11 w-11 rounded-full border border-rig-600 object-cover"
+        width="44"
+        height="44"
+      />
+      <span class="flex flex-col leading-none">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-ember-500">Est. 2024</span>
+        <span class="text-lg font-extrabold uppercase tracking-tight text-zinc-50">
+          Frankin<span class="text-ember-500">Ford</span>
+        </span>
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-mono text-sm uppercase tracking-wide text-zinc-300 transition hover:text-ember-500"
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a
+        href="https://www.youtube.com/@FrankinFord7379"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden items-center gap-2 font-mono text-sm uppercase tracking-wide text-zinc-300 transition hover:text-ember-500 sm:flex"
+        aria-label="Watch FrankinFord on YouTube"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.6 15.5v-7l6.3 3.5-6.3 3.5Z"/>
+        </svg>
+        YouTube
+      </a>
+      <a
+        href="#quote"
+        class="rounded-md bg-ember-600 px-4 py-2 font-mono text-sm font-semibold uppercase tracking-wide text-rig-950 transition hover:bg-ember-500"
+      >
+        Request Quote
+      </a>
+    </div>
+  </div>
+</header>

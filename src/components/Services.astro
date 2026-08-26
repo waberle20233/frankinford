@@ -1,0 +1,55 @@
+---
+const services = [
+  {
+    title: 'Front Clip & Cab Swaps',
+    description:
+      'Full front-clip and cab swaps with precision body alignment, mount fabrication, and wiring integration &mdash; matched panel gaps, no guesswork.',
+    icon: 'M4 16l1.5-5.5A2 2 0 0 1 7.4 9h9.2a2 2 0 0 1 1.9 1.5L20 16M4 16v3a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h10v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-3M4 16h16M7 13h2m6 0h2',
+  },
+  {
+    title: 'Chassis & Frame Fabrication',
+    description:
+      'Custom crossmembers, boxed frame rails, and structural repair built to hold up under heavy off-road loads and serious towing duty.',
+    icon: 'M3 12h18M3 12l4-4M3 12l4 4M21 12l-4-4M21 12l-4 4M9 6h6M9 18h6',
+  },
+  {
+    title: 'Drivetrain Conversions',
+    description:
+      'Engine and transmission swaps, transfer case changes, and driveline fabrication tailored to the power and terrain your build demands.',
+    icon: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1',
+  },
+  {
+    title: 'Custom Rig Consulting',
+    description:
+      'Not sure what your build needs? We spec the plan &mdash; parts, sequencing, and budget &mdash; before a single cut is made.',
+    icon: 'M9 3h6l1 4H8l1-4ZM6 7h12l1 13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1L6 7ZM10 11v6M14 11v6',
+  },
+];
+---
+
+<section id="services" class="border-y border-rig-700 bg-rig-900 py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-[0.3em] text-ember-500">What We Build</p>
+      <h2 class="mt-3 text-3xl font-extrabold uppercase tracking-tight text-zinc-50 sm:text-4xl">
+        Fabrication Services
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {services.map((service) => (
+        <div class="group rounded-xl border border-rig-700 bg-rig-950 p-6 transition hover:border-ember-600">
+          <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-ember-600/10 text-ember-500 transition group-hover:bg-ember-600/20">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d={service.icon} />
+            </svg>
+          </div>
+          <h3 class="mt-5 text-base font-bold uppercase tracking-tight text-zinc-50">
+            {service.title}
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-400">{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

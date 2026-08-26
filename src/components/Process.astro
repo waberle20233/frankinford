@@ -1,0 +1,45 @@
+---
+const steps = [
+  {
+    step: '01',
+    title: 'Consult & Scope',
+    description: 'We walk the truck, talk through the build goals, and spec out the plan, parts, and budget before anything gets cut.',
+  },
+  {
+    step: '02',
+    title: 'Fabricate on Camera',
+    description: 'Every cut, weld, and swap is filmed as it happens &mdash; posted to YouTube unedited so you can watch your build progress in real time.',
+  },
+  {
+    step: '03',
+    title: 'Align & Verify',
+    description: 'Panel gaps, ride height, and driveline angles are checked and rechecked before final assembly &mdash; no shortcuts on the details that matter.',
+  },
+  {
+    step: '04',
+    title: 'Hand Off & Support',
+    description: 'You get a walkthrough of everything that changed on your truck, plus documentation of the full build for your records.',
+  },
+];
+---
+
+<section id="process" class="bg-rig-950 py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-[0.3em] text-ember-500">How It Works</p>
+      <h2 class="mt-3 text-3xl font-extrabold uppercase tracking-tight text-zinc-50 sm:text-4xl">
+        Our Process
+      </h2>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {steps.map((item) => (
+        <div class="rounded-xl border border-rig-700 bg-rig-900 p-6">
+          <span class="font-mono text-3xl font-extrabold text-ember-600/40">{item.step}</span>
+          <h3 class="mt-4 text-base font-bold uppercase tracking-tight text-zinc-50">{item.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-zinc-400">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

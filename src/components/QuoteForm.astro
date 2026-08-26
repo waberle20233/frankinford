@@ -1,0 +1,176 @@
+---
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: 45 }, (_, i) => currentYear + 1 - i);
+---
+
+<section id="quote" class="border-t border-rig-700 bg-rig-900 py-20">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="font-mono text-xs uppercase tracking-[0.3em] text-ember-500">Start Your Build</p>
+      <h2 class="mt-3 text-3xl font-extrabold uppercase tracking-tight text-zinc-50 sm:text-4xl">
+        Request a Quote
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-zinc-400">
+        Tell us about your truck and the work you're after. We review every submission personally
+        and follow up to talk scope, timeline, and budget.
+      </p>
+    </div>
+
+    <form
+      id="quote-form"
+      action="/api/quote"
+      method="POST"
+      class="mt-12 space-y-6 rounded-2xl border border-rig-700 bg-rig-950 p-6 sm:p-10"
+    >
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label for="name" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Full Name</label>
+          <input
+            type="text" id="name" name="name" required
+            class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+          />
+        </div>
+        <div>
+          <label for="contact" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Phone or Email</label>
+          <input
+            type="text" id="contact" name="contact" required
+            class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div>
+          <label for="vehicleYear" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Vehicle Year</label>
+          <select
+            id="vehicleYear" name="vehicleYear" required
+            class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+          >
+            <option value="">Select year</option>
+            {years.map((year) => <option value={year}>{year}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="vehicleMake" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Make</label>
+          <input
+            type="text" id="vehicleMake" name="vehicleMake" value="Ford" required
+            class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+          />
+        </div>
+        <div>
+          <label for="vehicleModel" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Model</label>
+          <input
+            type="text" id="vehicleModel" name="vehicleModel" placeholder="F-250, Bronco, etc." required
+            class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="condition" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Current Condition</label>
+        <select
+          id="condition" name="condition" required
+          class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+        >
+          <option value="">Select condition</option>
+          <option value="running-driving">Running & Driving</option>
+          <option value="running-not-driving">Running, Not Driving</option>
+          <option value="not-running">Not Running</option>
+          <option value="project-parts">Project / Parts Truck</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Scope of Work</label>
+        <div class="mt-3 grid gap-3 sm:grid-cols-2">
+          {[
+            'Front Clip / Cab Swap',
+            'Chassis & Frame Fabrication',
+            'Drivetrain Conversion',
+            'Custom Rig Consulting',
+            'Off-Road Modification',
+            'Other / Not Sure Yet',
+          ].map((option) => (
+            <label class="flex items-center gap-2 rounded-md border border-rig-700 bg-rig-900 px-3 py-2 text-sm text-zinc-300">
+              <input
+                type="checkbox" name="scope" value={option}
+                class="rounded border-rig-600 bg-rig-900 text-ember-600 focus:ring-ember-500"
+              />
+              {option}
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <label for="budget" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Target Budget</label>
+        <select
+          id="budget" name="budget" required
+          class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+        >
+          <option value="">Select budget range</option>
+          <option value="under-5k">Under $5,000</option>
+          <option value="5k-15k">$5,000 &ndash; $15,000</option>
+          <option value="15k-30k">$15,000 &ndash; $30,000</option>
+          <option value="30k-plus">$30,000+</option>
+          <option value="not-sure">Not sure yet</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="details" class="block font-mono text-xs uppercase tracking-wide text-zinc-400">Project Details</label>
+        <textarea
+          id="details" name="details" rows="5" required
+          placeholder="Tell us about the build &mdash; what you're starting with, what you want to end up with, and any timeline constraints."
+          class="mt-2 block w-full rounded-md border-rig-600 bg-rig-900 text-zinc-100 shadow-sm focus:border-ember-500 focus:ring-ember-500"
+        ></textarea>
+      </div>
+
+      <div
+        class="cf-turnstile"
+        data-sitekey="YOUR_TURNSTILE_SITE_KEY"
+        data-theme="dark"
+      >
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-md bg-ember-600 px-8 py-4 font-mono text-sm font-bold uppercase tracking-wide text-rig-950 transition hover:bg-ember-500"
+      >
+        Submit Quote Request
+      </button>
+
+      <p id="quote-form-status" class="text-center text-sm text-zinc-400" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('quote-form') as HTMLFormElement | null;
+  const status = document.getElementById('quote-form-status');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!status) return;
+
+    status.textContent = 'Sending your request...';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        status.textContent = "Request received. We'll be in touch shortly.";
+        form.reset();
+      } else {
+        status.textContent = result.message || 'Something went wrong. Please try again.';
+      }
+    } catch {
+      status.textContent = 'Network error. Please try again in a moment.';
+    }
+  });
+</script>

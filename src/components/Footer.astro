@@ -1,0 +1,48 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-rig-700 bg-rig-900">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="flex items-start gap-3">
+        <img
+          src="/logo.jpg"
+          alt="FrankinFord Fabrications logo"
+          class="h-14 w-14 rounded-full border border-rig-600 object-cover"
+          width="56"
+          height="56"
+        />
+        <div>
+          <p class="text-lg font-extrabold uppercase tracking-tight text-zinc-50">
+            Frankin<span class="text-ember-500">Ford</span> Fabrications
+          </p>
+          <p class="mt-1 max-w-sm font-mono text-xs uppercase tracking-wide text-zinc-500">
+            Custom Ford truck fabrication &mdash; every cut, weld, and swap documented on camera.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <p class="font-mono text-xs uppercase tracking-[0.3em] text-ember-500">Follow the builds</p>
+        <a
+          href="https://www.youtube.com/@FrankinFord7379"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-zinc-300 transition hover:text-ember-500"
+        >
+          YouTube &mdash; @FrankinFord7379
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-4 border-t border-rig-700 pt-6 text-xs text-zinc-500 md:flex-row md:items-center md:justify-between">
+      <p>&copy; {year} FrankinFord Fabrications. All rights reserved.</p>
+      <p class="max-w-2xl">
+        Disclaimer: All fabrication work is performed by trained professionals. Custom modifications,
+        chassis work, and drivetrain conversions may affect vehicle warranty, insurability, and road
+        legality &mdash; verify requirements with your local DMV and insurer before undertaking a build.
+      </p>
+    </div>
+  </div>
+</footer>
