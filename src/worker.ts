@@ -1,4 +1,5 @@
-interface Env {
+export interface Env {
+  ASSETS: Fetcher;
   TURNSTILE_SECRET_KEY: string;
   RESEND_API_KEY: string;
   QUOTE_ALERT_TO: string;
@@ -40,9 +41,7 @@ function escapeHtml(value: string): string {
     .replace(/'/g, '&#39;');
 }
 
-export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const { request, env } = context;
-
+async function handleQuote(request: Request, env: Env): Promise<Response> {
   let form: FormData;
   try {
     form = await request.formData();
@@ -135,8 +134,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   return jsonResponse({ success: true, message: 'Quote request received.' }, 200);
-};
+}
 
-export const onRequestGet: PagesFunction = async () => {
-  return jsonResponse({ success: false, message: 'Method not allowed.' }, 405);
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/api/quote') {
+      if (request.method === 'POST') return handleQuote(request, env);
+      return jsonResponse({ success: false, message: 'Method not allowed.' }, 405);
+    }
+
+    return env.ASSETS.fetch(request);
+  },
 };
